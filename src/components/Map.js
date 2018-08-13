@@ -1,38 +1,23 @@
 import React, { Component } from "react";
-import {initMap} from "../utils/GoogleMapsAPI";
-//"export 'default' (imported as 'initMap') was not found in '../utils/GoogleMapsAPI'
-
+import { initMap, myPlaces } from "../utils/GoogleMapsAPI";
 
 class Map extends Component {
   state = {
     markers: [],
     //infoWindow: new window.google.maps.InfoWindow(),
-    //animate: window.google.maps.Animation
   };
 
   componentDidMount() {
-    initMap();
-    // call addMarker(this.props.places)
+
+    console.log(myPlaces)
+    let mapContainer = document.getElementById("map")
+    let places = this.props.places
+
+    initMap(myPlaces, mapContainer);
+    //addMarker();
   }
 
-  addMarker = placesArray => {
-    const { markers, animate } = this.state;
-    placesArray.forEach(place => {
-      let marker = new window.google.maps.Marker({
-        position: place.location,
-        map: this.map,
-        title: place.title,
-        animation: animate.DROP
-      });
-
-      markers.push(marker);
-      console.log(markers);
-
-      marker.addListener("click", this.animateMarker());
-
-      marker.addListener("click", this.populateInfoWindow());
-    });
-  };
+  
 
   // Bounce animation on click/selection
   // animateMarker = () => {
