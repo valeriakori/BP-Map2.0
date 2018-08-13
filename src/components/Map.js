@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { initMap, myPlaces } from "../utils/GoogleMapsAPI";
+import { initMap } from "../utils/GoogleMapsAPI";
 
 class Map extends Component {
   state = {
@@ -9,27 +9,12 @@ class Map extends Component {
 
   componentDidMount() {
 
-    console.log(myPlaces)
     let mapContainer = document.getElementById("map")
-    let places = this.props.places
+    let { places } = this.props
 
-    initMap(myPlaces, mapContainer);
-    //addMarker();
+    initMap(places, mapContainer);
   }
 
-  
-
-  // Bounce animation on click/selection
-  // animateMarker = () => {
-  //   if (marker.getAnimation() !== null) {
-  //     marker.setAnimation(null);
-  //   } else {
-  //     marker.setAnimation(animate.BOUNCE);
-  //     setTimeout(() => {
-  //       marker.setAnimation(null);
-  //     }, 750);
-  //   }
-  // };
 
   //Display InfoWindow
   populateInfoWindow = e => {

@@ -54,29 +54,44 @@ const myPlaces = [
 
 // returns initialised Map
 const initMap = (marker, id) => {
-  let markers = []
+  let animate = window.google.maps.Animation
+  let markers = [];
   this.map = new window.google.maps.Map(id, {
     center: { lat: 47.497912, lng: 19.040235 },
     zoom: 13
   });
+
   marker.forEach(place => {
     let marker = new window.google.maps.Marker({
       position: place.location,
       map: this.map,
       title: place.title,
-      animation: window.google.maps.Animation.DROP
+      animation: animate.DROP
     });
-    markers.push(marker)
+
+    markers.push(marker);
+
+    // Add bounce animation on click
+    marker.addListener("click", () => {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(animate.BOUNCE);
+        setTimeout(() => {
+          marker.setAnimation(null);
+        }, 750);
+      }
+    });
+
+    
   });
 };
+// Bounce animation on click/selection
 
-//let bounds = new google.maps.LatLngBounds();
 // const { markers, animate } = this.state;
 
 //   markers.push(marker);
 //   console.log(markers);
-
-//marker.addListener("click", this.animateMarker());
 
 //marker.addListener("click", this.populateInfoWindow());
 
