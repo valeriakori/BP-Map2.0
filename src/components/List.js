@@ -1,5 +1,5 @@
-import React, { Component}  from 'react';
-import ListItem from "./ListItem";
+import React, { Component } from "react";
+//import ListItem from "./ListItem";
 
 class List extends Component {
   //state = {};
@@ -21,10 +21,14 @@ class List extends Component {
         />
         <ul>
           {places.map(place => (
-            <ListItem
+            //<ListItem/>
+            <li
               onClick={e => this.props.handleSelection(e.target.innerText)}
               key={place.title}
-            />
+            >
+              <h4>{place.title}</h4>
+              <h5>{place.subtitle}</h5>
+            </li>
           ))}
         </ul>
       </section>
