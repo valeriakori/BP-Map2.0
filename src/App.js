@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import "./index.css";
 import List from "./components/List";
 import Map from "./components/Map";
-import myPlaces from "./utils/GoogleMapsAPI"
+import { myPlaces } from "./utils/GoogleMapsAPI"
 //"export 'default' (imported as 'places') was not found in './utils/GoogleMapsAPI'
 
 class App extends Component {
 
   state = {
     query: '',
-    places: [],
+    places: myPlaces,
     selectedPlace: ''
   }
 
   // initialise places array
-  componentDidMount() {
-    this.setState({ places: myPlaces })
-    console.log(myPlaces)
-    console.log(this.places)
-  }
+  // componentDidMount() {
+  //   this.setState({ places: myPlaces })
+  // }
 
   handleInput = query => {
     this.setState({ query: query });
