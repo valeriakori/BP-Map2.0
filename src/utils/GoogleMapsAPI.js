@@ -1,4 +1,5 @@
-const myPlaces = [
+ //Array of places available on the map
+ const myPlaces = [
     {
       title: "Casa Baja",
       subtitle:"placeholder",
@@ -51,12 +52,12 @@ const myPlaces = [
     }
   ];
   
-  export default myPlaces
-
   // returns initialised Map
-  export const initMap = () =>
+   const initMap = () =>
     (this.map = new window.google.maps.Map(document.getElementById("map"), {
       center: { lat: 47.497912, lng: 19.040235 },
       zoom: 13
-    }))  
+    })) 
+    
+    export { myPlaces, initMap }
   

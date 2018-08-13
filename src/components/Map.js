@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import initMap from "../utils/GoogleMapsAPI";
+import {initMap} from "../utils/GoogleMapsAPI";
 //"export 'default' (imported as 'initMap') was not found in '../utils/GoogleMapsAPI'
 
 
@@ -7,11 +7,11 @@ class Map extends Component {
   state = {
     markers: [],
     //infoWindow: new window.google.maps.InfoWindow(),
-    animate: window.google.maps.Animation
+    //animate: window.google.maps.Animation
   };
 
   componentDidMount() {
-    //initMap();
+    initMap();
     // call addMarker(this.props.places)
   }
 
