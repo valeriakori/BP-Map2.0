@@ -10,7 +10,7 @@ const myPlaces = [
   {
     title: "Linguarum",
     subtitle: "placeholder",
-    location: { lat: 47.5175433, lng: 18.8890769 },
+    location: { lat: 47.4773613, lng: 19.0298547 },
     description:
       "The place that inspired me to start coding. 11/10, would intern again there"
   },
