@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import "./index.css";
 import List from "./components/List";
 import Map from "./components/Map";
-import { myPlaces } from "./utils/GoogleMapsAPI"
-//"export 'default' (imported as 'places') was not found in './utils/GoogleMapsAPI'
+import { myPlaces, populateInfoWindow } from "./utils/GoogleMapsAPI"
 
 class App extends Component {
 
@@ -23,7 +22,8 @@ class App extends Component {
   };
 
   handleSelection = e => {
-    // setState({ seletedPlace: e })
+    this.setState({ seletedPlace: e })
+    populateInfoWindow(e)
     // handles click on ListItem and calls Maps populateInfoWindow method
   }
 

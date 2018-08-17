@@ -52,10 +52,24 @@ const myPlaces = [
   }
 ];
 
+let markers = [];
+
+const bounceMarker = marker => {
+  let animate = window.google.maps.Animation;
+
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(animate.BOUNCE);
+    setTimeout(() => {
+      marker.setAnimation(null);
+    }, 750);
+  }
+};
+
 // returns initialised Map
 const initMap = (marker, id) => {
-  let animate = window.google.maps.Animation
-  let markers = [];
+  let animate = window.google.maps.Animation;
   this.map = new window.google.maps.Map(id, {
     center: { lat: 47.497912, lng: 19.040235 },
     zoom: 13
@@ -73,6 +87,8 @@ const initMap = (marker, id) => {
 
     // Add bounce animation on click
     marker.addListener("click", () => {
+      let animate = window.google.maps.Animation;
+
       if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
       } else {
@@ -82,17 +98,23 @@ const initMap = (marker, id) => {
         }, 750);
       }
     });
+    //marker.addListener('click', this.bounceMarker(something))
 
-    
+    // Open Infowindow on click
+    //marker.addListener("click", populateInfoWindow());
   });
 };
-// Bounce animation on click/selection
 
-// const { markers, animate } = this.state;
+const infoWindow = new window.google.maps.InfoWindow();
 
-//   markers.push(marker);
-//   console.log(markers);
+const populateInfoWindow = e => {
+  console.log("marker clicked");
+  let selectedPlace = myPlaces.findIndex(place => place.title === e);
+  bounceMarker(markers[selectedPlace]);
+  infoWindow.setContent(myPlaces[selectedPlace].title);
+  infoWindow.open(this.map, markers[selectedPlace]);
 
-//marker.addListener("click", this.populateInfoWindow());
+  // console.log( markers[selectedPlace])
+};
 
-export { myPlaces, initMap };
+export { myPlaces, initMap, populateInfoWindow };
