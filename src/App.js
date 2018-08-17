@@ -12,11 +12,6 @@ class App extends Component {
     selectedPlace: ''
   }
 
-  // initialise places array
-  // componentDidMount() {
-  //   this.setState({ places: myPlaces })
-  // }
-
   handleQuery = query => {
     console.log(query)
     if (query) {
