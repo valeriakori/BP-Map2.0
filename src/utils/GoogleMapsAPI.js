@@ -117,4 +117,18 @@ const populateInfoWindow = e => {
   // console.log( markers[selectedPlace])
 };
 
-export { myPlaces, initMap, populateInfoWindow };
+const filterMarker = (query) => {
+  resetMarker()
+  markers.forEach(marker => {
+    if (!marker.title.includes(query)) {
+      console.log(marker)
+      marker.setMap(null);
+    }
+  })
+}
+
+const resetMarker = () => {
+  markers.forEach(marker => marker.setMap(this.map))
+}
+
+export { myPlaces, initMap, populateInfoWindow, filterMarker, resetMarker };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./index.css";
 import List from "./components/List";
 import Map from "./components/Map";
-import { myPlaces, populateInfoWindow } from "./utils/GoogleMapsAPI"
+import { myPlaces, populateInfoWindow, filterMarker, resetMarker } from "./utils/GoogleMapsAPI"
 
 class App extends Component {
 
@@ -17,10 +17,10 @@ class App extends Component {
     if (query) {
       //this.setState({ query: query })
       this.filterList(query)
-      //filterMarker()
+      filterMarker(query)
     } else {
       this.setState({ places: myPlaces })
-      //resetMarker()
+      resetMarker()
     }
   };
 
