@@ -33,7 +33,7 @@ nav h1, nav p {
 .list-section input {
   width: 90%;
   padding: 5px;
-
+  position: fixed;
 }
 
 .list-section ul li {
@@ -58,6 +58,7 @@ nav h1, nav p {
 .list-section {
   width: 100%;
   margin-left: 0;
+  overflow: auto;
 }
 
 @media only screen and (min-width:600px) {
