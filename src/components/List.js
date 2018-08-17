@@ -22,11 +22,10 @@ class List extends Component {
         <ul>
           {places.map(place => (
             //<ListItem/>
-            <li
-              onClick={e => this.props.handleSelection(e.target.innerText)}
-              key={place.title}
-            >
-              <h4>{place.title}</h4>
+            <li key={place.title}>
+              <h4 onClick={e => this.props.handleSelection(e.target.innerText)}>
+                {place.title}
+              </h4>
               <h5>{place.subtitle}</h5>
             </li>
           ))}
