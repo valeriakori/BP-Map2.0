@@ -17,9 +17,22 @@ class App extends Component {
   //   this.setState({ places: myPlaces })
   // }
 
-  handleInput = query => {
-    this.setState({ query: query });
+  handleQuery = query => {
+    console.log(query)
+    if (query) {
+      //this.setState({ query: query })
+      this.filterList(query)
+      //filterMarker()
+    } else {
+      this.setState({ places: myPlaces })
+      //resetMarker()
+    }
   };
+
+  filterList = (query) => {
+    let filteredList = myPlaces.filter(place => place.title.includes(query))
+    this.setState({ places: filteredList })
+  }
 
   handleSelection = e => {
     this.setState({ seletedPlace: e })
@@ -37,7 +50,7 @@ class App extends Component {
           <p>(The City That Unites)</p>
         </nav>
         <main className="app-container">
-          <List places={places} query={query} handleInput={this.handleInput} handleSelection={this.handleSelection} />
+          <List places={places} query={query} handleQuery={this.handleQuery} handleSelection={this.handleSelection} />
           <Map places={places} query={query} selectedPlace={selectedPlace} />
         </main>
       </div>
