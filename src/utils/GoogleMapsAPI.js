@@ -1,3 +1,5 @@
+import { fetchImage } from './FoursquareAPI'
+
 //Array of places available on the map
 const myPlaces = [
   {
@@ -108,13 +110,14 @@ const initMap = (marker, id) => {
 const infoWindow = new window.google.maps.InfoWindow();
 
 const populateInfoWindow = e => {
-  console.log("marker clicked");
   let selectedPlace = myPlaces.findIndex(place => place.title === e);
   bounceMarker(markers[selectedPlace]);
   infoWindow.setContent(myPlaces[selectedPlace].title);
   infoWindow.open(this.map, markers[selectedPlace]);
 
-  // console.log( markers[selectedPlace])
+  let image = fetchImage(myPlaces[selectedPlace].requestId)
+
+  console.log(image)
 };
 
 const filterMarker = (query) => {
