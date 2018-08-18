@@ -100,7 +100,7 @@ const initMap = (marker, id) => {
         }, 750);
       }
     });
-    //marker.addListener('click', this.bounceMarker(something))
+    //marker.addListener('click', bounceMarker(something))
 
     // Open Infowindow on click
     //marker.addListener("click", populateInfoWindow());
