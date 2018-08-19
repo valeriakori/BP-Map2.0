@@ -19,7 +19,7 @@ class List extends Component {
           onChange={e => this.props.handleQuery(e.target.value)}
           placeholder="Search for Location"
         />
-        <ul>
+        <ul className="list-container">
           {places.map(place => (
             //<ListItem/>
             <li key={place.title}>
