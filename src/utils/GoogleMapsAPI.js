@@ -1,4 +1,4 @@
-import { fetchImage } from "./FoursquareAPI";
+import { imageUrls } from "./FoursquareAPI";
 
 //Array of places available on the map
 const myPlaces = [
@@ -68,8 +68,10 @@ const myPlaces = [
   }
 ];
 
+// array of markers 
 let markers = [];
 
+// animates selected marker
 const bounceMarker = marker => {
   let animate = window.google.maps.Animation;
 
@@ -83,9 +85,11 @@ const bounceMarker = marker => {
   }
 };
 
-// returns initialised Map
+// returns initialised map + markers
 const initMap = (marker, id) => {
+
   let animate = window.google.maps.Animation;
+
   this.map = new window.google.maps.Map(id, {
     center: { lat: 47.497912, lng: 19.040235 },
     zoom: 13
@@ -130,9 +134,21 @@ const initMap = (marker, id) => {
 const infoWindow = new window.google.maps.InfoWindow();
 
 const populateInfoWindow = e => {
+
+  let content = ''
   let selectedPlace = myPlaces.findIndex(place => place.title === e);
+  let image = imageUrls.findIndex(image => image.title === e)
+
+  content = 
+  `<div tab-index="0">
+  <h6>${myPlaces[selectedPlace].title}</h6>
+  <img src="${imageUrls[image].photoUrl}" alt=${imageUrls[image].title}>
+  <p>${myPlaces[selectedPlace].description}</p>
+  </div>`
+
   bounceMarker(markers[selectedPlace]);
-  infoWindow.setContent(myPlaces[selectedPlace].title);
+
+  infoWindow.setContent(content);
   infoWindow.open(this.map, markers[selectedPlace]);
 
   let image = fetchImage(myPlaces[selectedPlace].requestId);
