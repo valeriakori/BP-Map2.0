@@ -60,7 +60,7 @@ nav h1, nav p {
   overflow: auto;
 }
 
-@media only screen and (min-width:600px) {
+@media only screen and (min-width:800px) {
   .app-container {
     height: calc(100vh - 50px);
   }
@@ -69,7 +69,7 @@ nav h1, nav p {
   }
   .app-container .list-section {
     width: 275px;
-    float: left;
+    /* float: left; */
     position: absolute;
   }
   .map-section {
