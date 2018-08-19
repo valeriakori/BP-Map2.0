@@ -10,8 +10,12 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    
-    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXMovp8dRBqQWb5wrOd9qgzQ8zMfnXUo&libraries=places'></script>
+    <script>
+      const loadingFailed = (error) => {
+        console.log("An error occured " + error)
+      }
+    </script>
+    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXMovp8dRBqQWb5wrOd9qgzQ8zMfnXUo&libraries=places' onerror='loadingFailed'></script>
 
   </body>
 </html>
