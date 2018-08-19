@@ -3,6 +3,7 @@ import "./index.css";
 import List from "./components/List";
 import Map from "./components/Map";
 import { myPlaces, populateInfoWindow, filterMarker, resetMarker } from "./utils/GoogleMapsAPI"
+import { fetchImages } from "./utils/FoursquareAPI"
 
 class App extends Component {
 
@@ -10,6 +11,10 @@ class App extends Component {
     query: '',
     places: myPlaces,
     selectedPlace: ''
+  }
+
+  componentDidMount() {
+    fetchImages()
   }
 
   handleQuery = query => {

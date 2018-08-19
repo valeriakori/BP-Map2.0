@@ -1,5 +1,6 @@
-import { imageUrls } from "./FoursquareAPI";
+//import { imageUrls } from "./FoursquareAPI";
 
+//console.log(imageUrls)
 //Array of places available on the map
 const myPlaces = [
   {
@@ -135,25 +136,25 @@ const infoWindow = new window.google.maps.InfoWindow();
 
 const populateInfoWindow = e => {
 
-  let content = ''
-  let selectedPlace = myPlaces.findIndex(place => place.title === e);
-  let image = imageUrls.findIndex(image => image.title === e)
+  // let content = ''
+  // let selectedPlace = myPlaces.findIndex(place => place.title === e);
+  // let image = imageUrls.findIndex(image => image.title === e)
 
-  content = 
-  `<div tab-index="0">
-  <h6>${myPlaces[selectedPlace].title}</h6>
-  <img src="${imageUrls[image].photoUrl}" alt=${imageUrls[image].title}>
-  <p>${myPlaces[selectedPlace].description}</p>
-  </div>`
+  // content = 
+  // `<div tab-index="0">
+  // <h6>${myPlaces[selectedPlace].title}</h6>
+  // <img src="${imageUrls[image].photoUrl}" alt=${imageUrls[image].title}>
+  // <p>${myPlaces[selectedPlace].description}</p>
+  // </div>`
 
-  bounceMarker(markers[selectedPlace]);
+  // bounceMarker(markers[selectedPlace]);
 
-  infoWindow.setContent(content);
-  infoWindow.open(this.map, markers[selectedPlace]);
+  // infoWindow.setContent(content);
+  // infoWindow.open(this.map, markers[selectedPlace]);
 
-  let image = fetchImage(myPlaces[selectedPlace].requestId);
+  //let image = fetchImage(myPlaces[selectedPlace].requestId);
 
-  console.log(image);
+  //console.log(image);
 };
 
 const filterMarker = query => {
