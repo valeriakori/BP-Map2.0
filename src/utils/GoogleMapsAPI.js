@@ -91,7 +91,7 @@ const initMap = (marker, id) => {
     zoom: 13
   });
 
-  //const bounds = new window.google.maps.LatLngBounds()
+  const bounds = new window.google.maps.LatLngBounds()
 
   marker.forEach(place => {
     let marker = new window.google.maps.Marker({
@@ -103,7 +103,7 @@ const initMap = (marker, id) => {
 
     markers.push(marker);
 
-    //bounds.extend(marker.location)
+    bounds.extend(place.location)
 
     // Add bounce animation on click
     marker.addListener("click", () => {
@@ -124,7 +124,7 @@ const initMap = (marker, id) => {
     //marker.addListener("click", populateInfoWindow());
   });
 
-  //this.map.fitBounds(bounds)
+  this.map.fitBounds(bounds)
 };
 
 const infoWindow = new window.google.maps.InfoWindow();
