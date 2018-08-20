@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import "./index.css";
 import List from "./components/List";
 import Map from "./components/Map";
-import { myPlaces, populateInfoWindow, filterMarker, resetMarker } from "./utils/GoogleMapsAPI"
+import * as myPlaces from "./utils/places.json";
+import { populateInfoWindow, filterMarker, resetMarker } from "./utils/GoogleMapsAPI"
 import { fetchImages } from "./utils/FoursquareAPI"
 
 class App extends Component {
