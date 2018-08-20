@@ -1,7 +1,10 @@
-body {
+html, body {
   padding: 0;
   margin: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 nav {
@@ -9,6 +12,11 @@ nav {
   height: 50px;
   text-align: center;
   background-color: #436F4D;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 nav h1, nav p {
@@ -20,9 +28,17 @@ nav h1, nav p {
   height: 50vh;
 }
 
-.app-container .list-section {
-  height: calc(100vh - 50px);
+.list-section {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: 0;
+  overflow: auto;
   background-color: rgb(236, 236, 236);
+  overflow: auto;
+  z-index: 1;
 }
 
 .list-section ul {
@@ -30,6 +46,7 @@ nav h1, nav p {
   margin: 0;
   padding: 0;
 }
+
 .list-section input {
   width: 90%;
   position: fixed;
@@ -40,6 +57,7 @@ nav h1, nav p {
   border-bottom: 1.5px solid #CD2A3E;
   padding: 5px;
 }
+
 .list-section ul li:hover {
   cursor: pointer;
 }
@@ -50,15 +68,13 @@ nav h1, nav p {
 }
 
 .map-section {
+  height: 50%;
   width: 100%;
-  float: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.list-section {
-  width: 100%;
-  margin-left: 0;
-  overflow: auto;
-}
 
 @media only screen and (min-width:800px) {
   .app-container {
@@ -69,7 +85,8 @@ nav h1, nav p {
   }
   .app-container .list-section {
     width: 275px;
-    /* float: left; */
+    top: 0;
+    height: 100%;
     position: absolute;
   }
   .map-section {
