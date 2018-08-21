@@ -65,8 +65,8 @@ const initMap = (marker, id) => {
     //marker.addListener('click', bounceMarker(something))
 
     // Open Infowindow on click
-    marker.addListener("click", (marker) => {
-      console.log(marker)
+    marker.addListener("click", (marker, infoWindow) => {
+      console.log(marker + infoWindow)
     });
   });
 
