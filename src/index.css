@@ -71,7 +71,7 @@ nav h1, nav p {
   height: 50%;
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
 }
 
@@ -85,7 +85,7 @@ nav h1, nav p {
   }
   .app-container .list-section {
     width: 275px;
-    top: 0;
+    top: 50px;
     height: 100%;
     position: absolute;
   }
