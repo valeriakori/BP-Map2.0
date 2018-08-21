@@ -56,11 +56,8 @@ const getImageUrl = (data) => {
     photo = data.response.photos.items[0];
     photoUrl = photo.prefix + "cap300" + photo.suffix;
 
-    console.log(photoUrl)
     imageUrls.push(photoUrl);
   }
-  console.log(imageUrls)
-
 }
 
 export { imageUrls, fetchImages };
