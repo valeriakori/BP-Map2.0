@@ -65,7 +65,9 @@ const initMap = (marker, id) => {
     //marker.addListener('click', bounceMarker(something))
 
     // Open Infowindow on click
-    //marker.addListener("click", populateInfoWindow());
+    marker.addListener("click", (marker) => {
+      console.log(marker)
+    });
   });
 
   this.map.fitBounds(bounds)
