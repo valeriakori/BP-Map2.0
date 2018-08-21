@@ -1,5 +1,5 @@
 import * as myPlaces from "./places.json";
-//import { imageUrls } from "./FoursquareAPI";
+import { imageUrls } from "./FoursquareAPI";
 
 
 let infoWindow
@@ -74,25 +74,24 @@ const initMap = (marker, id) => {
 
 const populateInfoWindow = e => {
 
-  // let content = ''
-  // let selectedPlace = myPlaces.findIndex(place => place.title === e);
-  // let image = imageUrls.findIndex(image => image.title === e)
+  let content = ''
+  let selectedPlace = myPlaces.findIndex(place => place.title === e);
+  let image = imageUrls[selectedPlace]
 
-  // content = 
-  // `<div tab-index="0">
-  // <h6>${myPlaces[selectedPlace].title}</h6>
-  // <img src="${imageUrls[image].photoUrl}" alt=${imageUrls[image].title}>
-  // <p>${myPlaces[selectedPlace].description}</p>
-  // </div>`
+  content = 
+  `<div tab-index="0" class="infowindow-wrapper">
+  <h4>${myPlaces[selectedPlace].title}</h4>
+    <div class="infowindow-content">
+      <img src="${image}" alt=${myPlaces[selectedPlace].title}>
+      <p>${myPlaces[selectedPlace].description}</p>
+    </div>
+  </div>`
 
-  // bounceMarker(markers[selectedPlace]);
+  bounceMarker(markers[selectedPlace]);
 
-  // infoWindow.setContent(content);
-  // infoWindow.open(this.map, markers[selectedPlace]);
+  infoWindow.setContent(content);
+  infoWindow.open(this.map, markers[selectedPlace]);
 
-  //let image = fetchImage(myPlaces[selectedPlace].requestId);
-
-  //console.log(image);
 };
 
 const filterMarker = query => {

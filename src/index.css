@@ -25,14 +25,14 @@ nav h1, nav p {
 }
 
 #map {
-  height: 50vh;
+  height: 65vh;
 }
 
 .list-section {
-  height: 50%;
+  height: 35%;
   width: 100%;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 0;
   margin-left: 0;
   overflow: auto;
@@ -68,11 +68,24 @@ nav h1, nav p {
 }
 
 .map-section {
-  height: 50%;
+  height: 65%;
   width: 100%;
   position: absolute;
   top: 50px;
   left: 0;
+}
+
+.infowindow-wrapper {
+  height: 250px;
+  width: 250px;
+  text-align: center;
+}
+.infowindow-content img {
+  height: 50%;
+}
+
+.infowindow-content {
+  display: flex;
 }
 
 
@@ -95,5 +108,9 @@ nav h1, nav p {
   #map {
     margin-left: 275px;
     height: 100%;
+  }
+  .infowindow-wrapper {
+    width: 300px;
+    height: 450px;
   }
 }
