@@ -1,6 +1,9 @@
 import * as myPlaces from "./places.json";
 //import { imageUrls } from "./FoursquareAPI";
 
+
+let infoWindow
+
 //console.log(imageUrls)
 
 // array of markers 
@@ -22,6 +25,8 @@ const bounceMarker = marker => {
 
 // returns initialised map + markers
 const initMap = (marker, id) => {
+  
+  infoWindow = new window.google.maps.InfoWindow();
 
   let animate = window.google.maps.Animation;
 
@@ -66,7 +71,6 @@ const initMap = (marker, id) => {
   this.map.fitBounds(bounds)
 };
 
-const infoWindow = new window.google.maps.InfoWindow();
 
 const populateInfoWindow = e => {
 
