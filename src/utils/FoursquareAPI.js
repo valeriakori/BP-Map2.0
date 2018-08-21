@@ -38,33 +38,31 @@ const fetchImages = () => {
   Promise.all(
     fetchUrls.map(url => {
       fetch(url)
-        .then(response => {
-          let data = response.json();
-
-          console.log(data)
-          // let photoUrl = "";
-
-          // let photo = "";
-
-          // if (
-          //   data.response &&
-          //   data.response.photos &&
-          //   data.response.photos.items &&
-          //   data.response.photos.items.length > 0
-          // ) {
-          //   photo = data.response.photos.items[0];
-          //   photoUrl = photo.prefix + "cap300" + photo.suffix;
-
-          //   console.log(photoUrl)
-          //   imageUrls.push(photoUrl);
-          // }
-        })
-
+        .then(response => response.json())
+        .then(getImageUrl)
         .catch(error =>
           console.log("Oopsie daisy, an error occured: " + error)
         );
     })
   );
 };
+
+const getImageUrl = (data) => {
+  let photoUrl = "";
+
+  let photo = "";
+
+  if (
+    data.response &&
+    data.response.photos &&
+    data.response.photos.items &&
+    data.response.photos.items.length > 0
+  ) {
+    photo = data.response.photos.items[0];
+    photoUrl = photo.prefix + "cap300" + photo.suffix;
+
+    imageUrls.push(photoUrl);
+  }
+}
 
 export { imageUrls, fetchImages };
