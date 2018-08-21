@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //fetchImages()
+    fetchImages()
   }
 
   componentDidCatch(err) {

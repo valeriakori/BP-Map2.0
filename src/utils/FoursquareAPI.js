@@ -2,16 +2,10 @@ import * as cred from "./crededentials.js";
 import * as myPlaces from "./places.json";
 
 let imageUrls = [
-  {
-    title: "Casa Baja",
-    photoUrl: "url"
-  },
-  {
-    title: "Linguarum",
-    photoUrl: "url"
-  }
+  "casabaja", "linguarum"
 ];
 
+// Generates array of urls to catch which is passed to Promise.all()
 const generateUrlArray = arr => {
   let urlsToFetch = [];
 
@@ -31,7 +25,7 @@ const generateUrlArray = arr => {
   return urlsToFetch;
 };
 
-// Returns requested venues' imageUrl
+// Sends out fetch request to Foursquare
 const fetchImages = () => {
   let fetchUrls = generateUrlArray(myPlaces);
 
@@ -47,6 +41,7 @@ const fetchImages = () => {
   );
 };
 
+// Returns requested venues' imageUrl
 const getImageUrl = (data) => {
   let photoUrl = "";
 
@@ -61,8 +56,11 @@ const getImageUrl = (data) => {
     photo = data.response.photos.items[0];
     photoUrl = photo.prefix + "cap300" + photo.suffix;
 
+    console.log(photoUrl)
     imageUrls.push(photoUrl);
   }
+  console.log(imageUrls)
+
 }
 
 export { imageUrls, fetchImages };
