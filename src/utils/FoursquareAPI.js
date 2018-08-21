@@ -12,72 +12,59 @@ let imageUrls = [
   }
 ];
 
-
-
 const generateUrlArray = arr => {
+  let urlsToFetch = [];
 
-
-
-
-  let urlsToFetch = arr.map(place => {
-    let venueID = ''
-
-    let requestURL = `https://api.foursquare.com/v2/venues/${venueID}/photos?limit=1&client_id=${
-      cred.CLIENT_ID
-      }&client_secret=${cred.CLIENT_SECRET}&v=${cred.version}`
-
+  arr.map(place => {
     if (!place.requestId) {
       return;
     } else {
-      venueID = place.requestId
-      console.log(requestURL)
+      let venueID = place.requestId;
 
+      let requestURL = `https://api.foursquare.com/v2/venues/${venueID}/photos?limit=1&client_id=${
+        cred.CLIENT_ID
+      }&client_secret=${cred.CLIENT_SECRET}&v=${cred.version}`;
+      urlsToFetch.push(requestURL);
     }
-  })
+  });
 
-  return urlsToFetch
-
-}
+  return urlsToFetch;
+};
 
 // Returns requested venues' imageUrl
 const fetchImages = () => {
+  let fetchUrls = generateUrlArray(myPlaces);
 
-  generateUrlArray(myPlaces)
-  /*  Promise.all(myPlaces.map(place => {
- 
-     console.log(place.requestId)
- 
-     fetch(requestURL)
-       .then(response => {
-         response.json();
-       })
-       //.then(getUrl)
-       .catch(error => console.log("Oopsie daisy, an error occured: " + error));
-   })) */
+  Promise.all(
+    fetchUrls.map(url => {
+      fetch(url)
+        .then(response => {
+          let data = response.json();
+
+          console.log(data)
+          // let photoUrl = "";
+
+          // let photo = "";
+
+          // if (
+          //   data.response &&
+          //   data.response.photos &&
+          //   data.response.photos.items &&
+          //   data.response.photos.items.length > 0
+          // ) {
+          //   photo = data.response.photos.items[0];
+          //   photoUrl = photo.prefix + "cap300" + photo.suffix;
+
+          //   console.log(photoUrl)
+          //   imageUrls.push(photoUrl);
+          // }
+        })
+
+        .catch(error =>
+          console.log("Oopsie daisy, an error occured: " + error)
+        );
+    })
+  );
 };
-
-/* const getUrl = (data) =>  {
-  console.log(data)
-
-  let imageUrl = {
-    title: "",
-    photoUrl: ""
-  };
-  let photo = "";
-
-  if (
-    data.response &&
-    data.response.photos &&
-    data.response.photos.items &&
-    data.response.photos.items.length > 0
-  ) {
-    imageUrl.title = place.title;
-
-    photo = data.response.photos.items[0];
-    imageUrl.photoUrl = photo.prefix + "cap300" + photo.suffix;
-
-    imageUrls.push(imageUrl);
-  }
-} */
 
 export { imageUrls, fetchImages };
