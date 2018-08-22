@@ -2,7 +2,7 @@ import * as cred from "./crededentials.js";
 import * as myPlaces from "./places.json";
 
 let imageUrls = [
-  "casabaja", "linguarum"
+  "../img/casabaja.png", "../img/linguarum.png"
 ];
 
 // Generates array of urls to catch which is passed to Promise.all()
