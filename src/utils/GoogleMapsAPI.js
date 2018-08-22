@@ -4,8 +4,6 @@ import { imageUrls } from "./FoursquareAPI";
 
 let infoWindow
 
-//console.log(imageUrls)
-
 // array of markers 
 let markers = [];
 
@@ -71,7 +69,6 @@ const initMap = (marker, id) => {
       let selectedPlace = myPlaces.findIndex(place => place.title === marker.title)
       let image = imageUrls[selectedPlace]
 
-      console.log(myPlaces[selectedPlace])
       content =
         `<div tab-index="0" class="infowindow-wrapper">
           <h4>${myPlaces[selectedPlace].title}</h4>
@@ -121,7 +118,6 @@ const filterMarker = query => {
   resetMarker();
   markers.forEach(marker => {
     if (!marker.title.includes(query)) {
-      console.log(marker);
       marker.setMap(null);
     }
   });
