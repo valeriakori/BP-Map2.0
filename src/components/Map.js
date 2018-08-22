@@ -3,6 +3,7 @@ import { initMap } from "../utils/GoogleMapsAPI";
 
 class Map extends Component {
 
+  // Calls initMap function and assigns map to div
   componentDidMount() {
 
     let mapContainer = document.getElementById("map")

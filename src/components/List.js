@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-//import ListItem from "./ListItem";
 
 class List extends Component {
-  //state = {};
-  // hat die überhaupt state?
-  // places wird als prop v. App übergeben
-
-  filterPlaces = query => {
-    //filters out !places.contain(query)
-  };
 
   render() {
     const { places } = this.props;
@@ -21,7 +13,6 @@ class List extends Component {
         />
         <ul className="list-container">
           {places.map(place => (
-            //<ListItem/>
             <li key={place.title}>
               <h4 onClick={e => this.props.handleSelection(e.target.innerText)}>
                 {place.title}

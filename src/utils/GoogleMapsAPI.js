@@ -25,7 +25,7 @@ const bounceMarker = marker => {
 
 // returns initialised map + markers
 const initMap = (marker, id) => {
-  
+
   infoWindow = new window.google.maps.InfoWindow();
 
   let animate = window.google.maps.Animation;
@@ -65,23 +65,40 @@ const initMap = (marker, id) => {
     //marker.addListener('click', bounceMarker(something))
 
     // Open Infowindow on click
-    marker.addListener("click", (marker, infoWindow) => {
-      console.log(marker + infoWindow)
+    marker.addListener("click", () => {
+      let content = ''
+
+      let selectedPlace = myPlaces.findIndex(place => place.title === marker.title)
+      let image = imageUrls[selectedPlace]
+
+      console.log(myPlaces[selectedPlace])
+      content =
+        `<div tab-index="0" class="infowindow-wrapper">
+          <h4>${myPlaces[selectedPlace].title}</h4>
+          <div class="infowindow-content">
+            <img src="${image}" alt=${myPlaces[selectedPlace].title}>
+            <p>${myPlaces[selectedPlace].description}</p>
+        </div>`
+
+      infoWindow.setContent(content);
+      infoWindow.open(this.map, marker);
+
+      infoWindow.addListener('closeclick',  () => infowindow.marker = null);
     });
   });
 
   this.map.fitBounds(bounds)
 };
 
-
+// Handles content and displaying of infoWindow
 const populateInfoWindow = e => {
 
   let content = ''
   let selectedPlace = myPlaces.findIndex(place => place.title === e);
   let image = imageUrls[selectedPlace]
 
-  content = 
-  `<div tab-index="0" class="infowindow-wrapper">
+  content =
+    `<div tab-index="0" class="infowindow-wrapper">
   <h4>${myPlaces[selectedPlace].title}</h4>
     <div class="infowindow-content">
       <img src="${image}" alt=${myPlaces[selectedPlace].title}>
@@ -94,8 +111,12 @@ const populateInfoWindow = e => {
   infoWindow.setContent(content);
   infoWindow.open(this.map, markers[selectedPlace]);
 
+  // Listener for closing infoWindow 
+  infoWindow.addListener('closeclick',  () => infowindow.marker = null);
+
 };
 
+// Function tha handles displaying only markers whose .title includes the query
 const filterMarker = query => {
   resetMarker();
   markers.forEach(marker => {
@@ -106,6 +127,7 @@ const filterMarker = query => {
   });
 };
 
+// Display all markers
 const resetMarker = () => {
   markers.forEach(marker => marker.setMap(this.map));
 };

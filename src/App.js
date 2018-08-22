@@ -16,15 +16,18 @@ class App extends Component {
     hasError: false
   };
 
+  //Sends out fetch requests to Foursquare once app started
   componentDidMount() {
     fetchImages()
   }
 
+  //Handles error catching
   componentDidCatch(err) {
     console.log("An error occured " + err);
     this.setState({ hasError: true });
   }
 
+  // Handles input field query
   handleQuery = query => {
     console.log(query);
     if (query) {
@@ -36,12 +39,13 @@ class App extends Component {
     }
   };
 
+  // Filters displayed list items
   filterList = query => {
     let filteredList = myPlaces.filter(place => place.title.includes(query));
     this.setState({ places: filteredList });
   };
 
-  // handles click on ListItem and calls Maps populateInfoWindow method
+  // handles click on ListItem and calls populateInfoWindow
   handleSelection = e => {
     this.setState({ seletedPlace: e });
     populateInfoWindow(e);
