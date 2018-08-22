@@ -14,7 +14,7 @@ Maps API Key: https://cloud.google.com/maps-platform/#get-started
 Foursquare Signup: https://de.foursquare.com/developers/signup
 
 Add your Google Maps API Key at `public/index.html` on line 15.
-Add your Foursquare crededentials at `src/utils/crededentials.js`. 
+Add your Foursquare crededentials at `src/utils/crededentials.js`.
 
 
 Fork and clone the repo using
