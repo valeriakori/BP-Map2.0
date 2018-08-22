@@ -83,7 +83,7 @@ const initMap = (marker, id) => {
       infoWindow.setContent(content);
       infoWindow.open(this.map, marker);
 
-      infoWindow.addListener('closeclick',  () => infowindow.marker = null);
+      infoWindow.addListener('closeclick',  () => infoWindow.marker = null);
     });
   });
 
@@ -112,7 +112,7 @@ const populateInfoWindow = e => {
   infoWindow.open(this.map, markers[selectedPlace]);
 
   // Listener for closing infoWindow 
-  infoWindow.addListener('closeclick',  () => infowindow.marker = null);
+  infoWindow.addListener('closeclick',  () => infoWindow.marker = null);
 
 };
 
