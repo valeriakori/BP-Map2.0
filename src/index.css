@@ -90,6 +90,9 @@ nav h1, nav p {
 
 
 @media only screen and (min-width:800px) {
+  nav {
+    margin-left: 275px;
+  }
   .app-container {
     height: calc(100vh - 50px);
   }
@@ -98,7 +101,7 @@ nav h1, nav p {
   }
   .app-container .list-section {
     width: 275px;
-    top: 50px;
+    top: 0;
     height: 100%;
     position: absolute;
   }
@@ -110,7 +113,7 @@ nav h1, nav p {
     height: 100%;
   }
   .infowindow-wrapper {
-    width: 300px;
+    width: 375px;
     height: 450px;
   }
 }
