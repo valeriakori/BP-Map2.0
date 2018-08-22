@@ -18,7 +18,7 @@ class App extends Component {
 
   //Sends out fetch requests to Foursquare once app started
   componentDidMount() {
-    fetchImages()
+    fetchImages();
   }
 
   //Handles error catching
@@ -67,7 +67,9 @@ class App extends Component {
             handleSelection={this.handleSelection}
           />
           {hasError ? (
-            window.alert("Something went wrong. Please check your Google Maps API key connection and reload the browser")
+            window.alert(
+              "Something went wrong. Please check your Google Maps API key or internet connection and reload the browser"
+            )
           ) : (
             <Map places={places} />
           )}
