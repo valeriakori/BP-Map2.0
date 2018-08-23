@@ -10,7 +10,10 @@ class List extends Component {
         <input
           onChange={e => this.props.handleQuery(e.target.value)}
           placeholder="Search for Location"
+          id="locations-filter"
         />
+        <label for="locations-filter">filter locations</label>
+
         <ul className="list-container">
           {places.map(place => (
             <li key={place.title}>
