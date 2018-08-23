@@ -34,9 +34,8 @@ const fetchImages = () => {
       fetch(url)
         .then(response => response.json())
         .then(getImageUrl)
-        .catch( err =>
-          console.log(err)
-          //window.alert("Unfortunately we were unable to fetch the requested images from Foursquare \n For the full experience check your Foursquare Crededentials and request quota and reload the page")
+        .catch(
+          window.alert("Unfortunately we were unable to fetch the requested images from Foursquare \n For the full experience check your Foursquare Crededentials and request quota and reload the page")
         );
     })
   );
