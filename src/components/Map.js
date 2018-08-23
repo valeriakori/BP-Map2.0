@@ -15,7 +15,7 @@ class Map extends Component {
   render() {
     return (
       <section className="map-section">
-        <div id="map" />
+        <div role="presentation" id="map" />
       </section>
     );
   }
