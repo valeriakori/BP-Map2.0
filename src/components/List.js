@@ -18,7 +18,7 @@ class List extends Component {
 
         <ul className="list-container" role="list">
           {places.map(place => (
-            <li key={place.title}>
+            <li role="listitem" key={place.title}>
               <h4 onClick={e => this.props.handleSelection(e.target.innerText)}>
                 {place.title}
               </h4>
