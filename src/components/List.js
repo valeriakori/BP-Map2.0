@@ -16,10 +16,10 @@ class List extends Component {
         />
         <label htmlFor="locations-filter">filter locations</label>
 
-        <ul className="list-container" id="locations-list" role="tablist">
+        <ul className="list-container" role="list">
           {places.map(place => (
-            <li role="tab" role="option" key={place.title}>
-              <h4 tabIndex="-1" onClick={e => this.props.handleSelection(e.target.innerText)}>
+            <li key={place.title}>
+              <h4 onClick={e => this.props.handleSelection(e.target.innerText)}>
                 {place.title}
               </h4>
               <h5>{place.subtitle}</h5>
