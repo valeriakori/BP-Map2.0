@@ -17,7 +17,7 @@ const generateUrlArray = arr => {
 
       let requestURL = `https://api.foursquare.com/v2/venues/${venueID}/photos?limit=1&client_id=${
         cred.CLIENT_ID
-      }&client_secret=${cred.CLIENT_SECRET}&v=${cred.version}`;
+        }&client_secret=${cred.CLIENT_SECRET}&v=${cred.version}`;
       urlsToFetch.push(requestURL);
     }
   });
@@ -34,8 +34,9 @@ const fetchImages = () => {
       fetch(url)
         .then(response => response.json())
         .then(getImageUrl)
-        .catch(error =>
-          console.log("Oopsie daisy, an error occured: " + error)
+        .catch( err =>
+          console.log(err)
+          //window.alert("Unfortunately we were unable to fetch the requested images from Foursquare \n For the full experience check your Foursquare Crededentials and request quota and reload the page")
         );
     })
   );
